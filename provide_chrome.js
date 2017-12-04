@@ -6,17 +6,17 @@ const launchParams = {
   flags: ['--window-size=1440,900', '--hide-scrollbars'],
 }
 
-function provideChrome (onError, onSuccess) {
+function provideChrome (callback) {
   if (!chrome) {
     launchChrome(launchParams)
       .then(_chrome => {
         chrome = _chrome
-        onSuccess(chrome)
+        callback(null, chrome)
       })
-      .catch(onError)
+      .catch(callback)
   }
   else {
-    onSuccess(chrome)
+    callback(null, chrome)
   }
 }
 

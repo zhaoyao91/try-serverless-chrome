@@ -7,7 +7,8 @@ const provideChrome = require('./provide_chrome')
  * demo on how to interact with chrome by using chromeless (with high level apis)
  */
 function chromelessHandler (event, context, callback) {
-  provideChrome(callback, chrome => {
+  provideChrome((err, chrome) => {
+    if (err) return callback(err)
     const chromeless = new Chromeless()
     chromeless
       .goto('https://www.google.com')
@@ -25,7 +26,8 @@ function chromelessHandler (event, context, callback) {
  * demo on how to interact with chrome by using chrome-remote-interface (with low level apis)
  */
 function CDPHandler (event, context, callback) {
-  provideChrome(callback, chrome => {
+  provideChrome((err, chrome) => {
+    if (err) return callback(err)
     CDP((client) => {
       // extract domains
       const {Network, Page} = client
