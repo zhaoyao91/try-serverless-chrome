@@ -1,0 +1,1 @@
+require('../index').CDPHandler(null, null, (err, result) => err ? console.error(err) : console.log(result))
