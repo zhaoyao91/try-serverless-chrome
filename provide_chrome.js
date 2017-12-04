@@ -3,7 +3,7 @@ const launchChrome = require('@serverless-chrome/lambda')
 let chrome
 
 const launchParams = {
-  flags: ['--window-size=1920x1080', '--hide-scrollbars'],
+  flags: ['--window-size=1440,900', '--hide-scrollbars'],
 }
 
 function provideChrome (onError, onSuccess) {
